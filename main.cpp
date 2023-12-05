@@ -3,6 +3,7 @@
 #include "Thread.h"
 #include "Speaker.h"
 #include "PinDetect.h"
+#include "uLCD_4DGL.h"
 // #include "XNucleo53L0A1.h"
 #include <stdio.h>
 #define VL53L0_I2C_SDA   p9
@@ -22,11 +23,13 @@
 //Class D amp for speaker
 //Current time
 
-// PwmOut speaker(p21);
-Serial blue(p28,p27);       // Bluetooth Module
-Speaker speaker(p21);       // Speaker
-Serial pc(USBTX,USBRX);     // Serial to PC for debug
-DigitalOut shdn(p26);       // TOF Sensor Reset
+
+
+uLCD_4DGL uLCD(p13,p14,p15); // uLCD Display - serial tx, serial rx, reset pin;
+Serial blue(p28,p27);        // Bluetooth Module
+Speaker speaker(p21);        // Speaker
+Serial pc(USBTX,USBRX);      // Serial to PC for debug
+DigitalOut shdn(p26);        // TOF Sensor Reset
 
 // Physical Pushbuttons     -- CHANGE PINS
 PinDetect up(p20);
@@ -301,6 +304,8 @@ int main()
     //     pc.printf("Failed to init board! \r\n");
     //     status = board->init_board();
     // }
+
+    uLCD.baudrate(3000000);
 
 
     // Get the current time as input from the user.
