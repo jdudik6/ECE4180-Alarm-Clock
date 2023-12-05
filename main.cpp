@@ -23,8 +23,6 @@
 //Class D amp for speaker
 //Current time
 
-
-
 uLCD_4DGL uLCD(p13,p14,p15); // uLCD Display - serial tx, serial rx, reset pin;
 Serial blue(p28,p27);        // Bluetooth Module
 Speaker speaker(p21);        // Speaker
